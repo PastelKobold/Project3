@@ -5,19 +5,30 @@ def checkWin():
     #Left, Right, Up, Diagonal
     for x in range(cols):
         for y in range(rows):
-            if(arr[x][y]['text']==arr[x+1][y]['text']==arr[x+2][y]['text']==arr[x+3][y]['text'] and arr[x][y]['text']!= ''):
-               winLbl.config(text = "You Win!")
-            if(arr[x][y]['text']==arr[x][y+1]['text']==arr[x][y+2]['text']==arr[x][y+3]['text'] and arr[x][y]['text']!= ''):
-               winLbl.config(text = "You Win!")
+            if (x < 4 and y < 4):
+                if(arr[x][y]['text']==arr[x+1][y]['text']==arr[x+2][y]['text']==arr[x+3][y]['text'] and arr[x][y]['text']!= ''):
+                    winLbl.config(text = "You Win!")
+                
+                if(arr[x][y]['text']==arr[x][y+1]['text']==arr[x][y+2]['text']==arr[x][y+3]['text'] and arr[x][y]['text']!= ''):
+                    winLbl.config(text = "You Win!")
+
+                if(arr[x][y]['text']==arr[x+1][y+1]['text']==arr[x+2][y+2]['text']==arr[x+3][y+3]['text'] and arr[x][y]['text']!= ''):
+                    winLbl.config(text = "You Win!")
+
+            if ((x > 4 and y > 4) and (x < 7 and y < 7)):
+                if(arr[x][y]['text']==arr[x-1][y-1]['text']==arr[x-2][y-2]['text']==arr[x-3][y-3]['text'] and arr[x][y]['text']!= ''):
+                    winLbl.config(text = "You Win!")
+            
 
 def press(x,y):
     global player
-    arr[x][y].config(text = player)
-    if player == "Red":
-        player = "Yellow"
-    else:
-        player = "Red"
-    checkWin()
+    if (arr[x-1][y]['text'] == "Red" or arr[x-1][y]['text'] == "Yellow" or arr[x][y] == arr[0][y]):
+        arr[x][y].config(text = player)
+        if player == "Red":
+            player = "Yellow"
+        else:
+            player = "Red"
+        checkWin()
 
 # def resetB():
 #     btn1.config(text = '')
