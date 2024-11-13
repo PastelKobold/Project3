@@ -22,13 +22,16 @@ def checkWin():
 
 def press(x,y):
     global player
-    if (arr[x-1][y]['text'] == "Red" or arr[x-1][y]['text'] == "Yellow" or arr[x][y] == arr[0][y]):
-        arr[x][y].config(text = player)
-        if player == "Red":
-            player = "Yellow"
-        else:
-            player = "Red"
-        checkWin()
+    if(arr[x][y]['text'] != "Red" and arr[x][y]['text'] != "Yellow"):
+        if (arr[x-1][y]['text'] == "Red" or arr[x-1][y]['text'] == "Yellow" or arr[x][y] == arr[0][y]):
+            arr[x][y].config(text = player)
+            if player == "Red":
+                player = "Yellow"
+            else:
+                player = "Red"
+            checkWin()
+    else:
+        pass
 
 # def resetB():
 #     btn1.config(text = '')
