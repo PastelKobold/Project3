@@ -17,8 +17,8 @@ def checkWin():
                         winLbl.config(text = "Red Wins!")
                     else:
                         winLbl.config(text = "Yellow Wins!")
-            if (x < 4 and y < 4):
-                if(arr[x][y]['text']==arr[x+1][y+1]['text']==arr[x+2][y+2]['text']==arr[x+3][y+3]['text'] and arr[x][y]['text']!= ''):
+            if ((x < 7 and x > 4 and y < 4)):
+                if(arr[x][y]['text']==arr[x-1][y+1]['text']==arr[x-2][y+2]['text']==arr[x-3][y+3]['text'] and arr[x][y]['text']!= ''):
                     if(arr[x][y]['text'] == "Red"):
                         winLbl.config(text = "Red Wins!")
                     else:
@@ -50,6 +50,8 @@ def press(x,y):
             else:
                 player = "Red"
             checkWin()
+
+#def reset()
 
 # def resetB():
 #     btn1.config(text = '')
