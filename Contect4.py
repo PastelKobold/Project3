@@ -59,7 +59,11 @@ def press(x,y):
                 player = "Red"
             checkWin()
 
-#def reset()
+def resetB(arr):
+    global photo
+    for x in range(cols):
+        for y in range(rows):
+            arr[x][y].config(image = photo)
 
 # def resetB():
 #     btn1.config(text = '')
@@ -89,6 +93,7 @@ for x in range(cols):
         arr[x][y] = Button(root, text='', command= lambda x1=x, y1=y: press(x1,y1) , height = 30, width = 30, image=photo)
         arr[x][y].grid(row = x, column = y)
 
+reset = Button(root, text = "Reset", command = lambda: resetB(arr), height = 3, width = 10)
 ## Create Buttons
 # btn1 = Button(root, text='', command= lambda: press(btn1), height = 3, width = 10)
 # btn2 = Button(root, text='', command= lambda: press(btn2), height = 3, width = 10)
