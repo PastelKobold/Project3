@@ -34,20 +34,28 @@ def checkWin():
 
 def press(x,y):
     global player
+    global red_photo
+    global yellow_photo
+    #red_photo = PhotoImage(file = "Red.png")
+    #yellow_photo = PhotoImage(file = "Yellow.png")
     if (arr[x][y] == arr[6][y]):
         if (arr[x][y]['text'] != "Red" and arr[x][y]['text'] != "Yellow"):
             arr[x][y].config(text = player)
             if player == "Red":
+                arr[x][y].config(image=red_photo)
                 player = "Yellow"
             else:
+                arr[x][y].config(image=yellow_photo)
                 player = "Red"
             checkWin()
     elif (arr[x+1][y]['text'] == "Red" or arr[x+1][y]['text'] == "Yellow"):
         if (arr[x][y]['text'] != "Red" and arr[x][y]['text'] != "Yellow"):
             arr[x][y].config(text = player)
             if player == "Red":
+                arr[x][y].config(image=red_photo)
                 player = "Yellow"
             else:
+                arr[x][y].config(image=yellow_photo)
                 player = "Red"
             checkWin()
 
@@ -69,11 +77,16 @@ root.geometry('300x300')
 
 #Make player
 player = "Red"
+photo = PhotoImage(file = "Empty.png")
+#global red_photo
+red_photo = PhotoImage(file = "Red.png")
+#global yellow_photo
+yellow_photo = PhotoImage(file = "Yellow.png")
 rows, cols = (7, 7)
 arr = [[0 for y in range(cols)] for x in range(rows)]
 for x in range(cols):
     for y in range(rows):
-        arr[x][y] = Button(root, text='', command= lambda x1=x, y1=y: press(x1,y1) , height = 3, width = 10)
+        arr[x][y] = Button(root, text='', command= lambda x1=x, y1=y: press(x1,y1) , height = 30, width = 30, image=photo)
         arr[x][y].grid(row = x, column = y)
 
 ## Create Buttons
