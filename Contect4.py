@@ -14,7 +14,6 @@ def checkWin():
                     else:
                         playerturn.config(text = "Reset")
                         winLbl.config(text = "Yellow Wins!")
-                        print("Horizontal")
             if (y < 4):
                 if(arr[x][y]['text']==arr[x][y+1]['text']==arr[x][y+2]['text']==arr[x][y+3]['text'] and arr[x][y]['text']!= ''):
                     if(arr[x][y]['text'] == "Red"):
@@ -23,7 +22,6 @@ def checkWin():
                     else:
                         playerturn.config(text = "Reset")
                         winLbl.config(text = "Yellow Wins!")
-                        print("Vertical")
             #Diagonals
             if ((x < 7 and x > 4 and y < 4)):
                 if(arr[x][y]['text']==arr[x-1][y+1]['text']==arr[x-2][y+2]['text']==arr[x-3][y+3]['text'] and arr[x][y]['text']!= ''):
@@ -33,7 +31,6 @@ def checkWin():
                     else:
                         playerturn.config(text = "Reset")
                         winLbl.config(text = "Yellow Wins!")
-                        print("Diagonal right")
 
             if (x > 4  and (x < 7 and y < 7)):
                 if((arr[x][y]['text']==arr[x-1][y-1]['text']==arr[x-2][y-2]['text']==arr[x-3][y-3]['text']) and arr[x][y]['text']!= '' and  (not x-3 < 0) and (not y-3 < 0)):
@@ -43,7 +40,6 @@ def checkWin():
                     else:
                         playerturn.config(text = "Reset")
                         winLbl.config(text = "Yellow Wins!")
-                        print("Diagonal left")
             
 
 def press(x,y):
