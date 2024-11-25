@@ -1,6 +1,10 @@
 from tkinter import *
+from tkinter import messagebox
 from PIL import Image, ImageFilter
 
+#Gavin Catron and Sarah Webster
+
+#Check win conditions
 def checkWin():
     #Check for range
     #Left, Right, Up, Diagonal
@@ -41,13 +45,11 @@ def checkWin():
                         playerturn.config(text = "Reset")
                         winLbl.config(text = "Yellow Wins!")
             
-
+#Function to handle when player clicks a button.
 def press(x,y):
     global player
     global red_photo
     global yellow_photo
-    #red_photo = PhotoImage(file = "Red.png")
-    #yellow_photo = PhotoImage(file = "Yellow.png")
     if (winLbl['text'] != "Yellow Wins!" and winLbl['text'] != "Red Wins!"):
         if (arr[x][y] == arr[6][y]):
             if (arr[x][y]['text'] != "Red" and arr[x][y]['text'] != "Yellow"):
@@ -78,6 +80,11 @@ def press(x,y):
                     showturn.config(image=red_photo)
                 checkWin()
 
+#Help button that explains game
+def help():
+    messagebox.showinfo("Game instructions","Players choose yellow or red discs. They drop the discs into the grid, starting in the middle or at the edge to stack their colored discs upwards, horizontally, or diagonally. Use strategy to block opponents while aiming to be the first player to get 4 in a row to win.")
+
+#Resets game
 def resetB(arr):
     global photo
     for x in range(cols):
@@ -90,11 +97,11 @@ root = Tk()
 root.geometry('300x300')
 #Make player
 player = "Red"
+#Loading colors for game
 photo = PhotoImage(file = "Empty.png")
-#global red_photo
 red_photo = PhotoImage(file = "Red.png")
-#global yellow_photo
 yellow_photo = PhotoImage(file = "Yellow.png")
+#Creating game grid
 rows, cols = (7, 7)
 arr = [[0 for y in range(cols)] for x in range(rows)]
 for x in range(cols):
@@ -102,11 +109,15 @@ for x in range(cols):
         arr[x][y] = Button(root, text='', command= lambda x1=x, y1=y: press(x1,y1) , height = 30, width = 30, image=photo)
         arr[x][y].grid(row = x, column = y)
 
+#Creating buttons
 showturn = Button(root, text='', height = 30, width = 30, image=red_photo)
 showturn.grid(row = 8, column = 11)
 
+info = Button(root, text="Help",  command = lambda: help(), height = 3, width = 10)
+info.grid(row = 27, column=1,columnspan=4)
+
 reset = Button(root, text = "Reset", command = lambda: resetB(arr), height = 3, width = 10)
-reset.grid(row = 25, column = 5, columnspan=4)
+reset.grid(row = 25, column = 1, columnspan=4)
 
 winLbl = Label(root)
 playerturn = Label(root, text="Red starts")
